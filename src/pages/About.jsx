@@ -1,6 +1,6 @@
 import { React, useId } from "react";
 import Hero from "../components/about/Abouthero";
-import CardHeading from "../components/about/Aboutcard.jsx";
+import CardHeading from "../components/about/Aboutcard";  
 import Aboutcardhero from "../components/room/Room";
 import { useEffect, useState } from "react";
 import { Row, Col } from "react-bootstrap";

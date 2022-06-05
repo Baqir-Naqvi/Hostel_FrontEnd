@@ -1,9 +1,9 @@
 import React from "react";
-import Room from "../components/room/Roomcard";
+import Room from "../components/room/Roomcard"
 import { useEffect, useState } from "react";
 import Row from "react-bootstrap/Row";
 import { Container } from "react-bootstrap";
-import Roomhero from "../components/room/Roomhero";
+import Roomhero from "../components/room/Roomhero"
 import Loader from "../layout/loader/Loader";
 import axios from "axios";
 function Rooms() {

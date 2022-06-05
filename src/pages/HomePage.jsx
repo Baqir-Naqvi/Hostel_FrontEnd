@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Hero from "../components/Hero/Hero";
 import Subhero from "../components/subhero/Subhero";
-import Room from "../components/room/Room.jsx";
+import Room from "../components/room/Room";
 import { Container, Row } from "react-bootstrap";
 import CustomCard from "../components/card/card";
 import Location from "../components/location/Location";
