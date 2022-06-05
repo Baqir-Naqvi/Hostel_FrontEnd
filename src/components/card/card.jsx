@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import './cardstyle.css'
 function card() {
   return (
-      <Card className="customcard">
+      <Card className="customcard" data-aos="zoom-in">
         <div className="innercard">
           <Card.Body>
             <Card.Title className="h1">Stay Longer, Save More</Card.Title>

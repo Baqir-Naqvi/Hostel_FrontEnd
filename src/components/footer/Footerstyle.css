@@ -59,3 +59,8 @@
   .footerdivlist li:focus:before {
     transform: scale(1);
   }
+  @media(max-width:420px){
+   #footerdivision{
+    width: 100%;
+   }
+  }

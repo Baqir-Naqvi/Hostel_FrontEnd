@@ -18,12 +18,10 @@ function HomePage() {
     Aos.init({ duration: 2000 });
     setLoading(true);
     async function fetchData() {
-      await axios
-        .get("https://hostelbackend.herokuapp.com/roomslist")
-        .then((res) => {
-          setData(res.data);
-          setLoading(false);
-        });
+      await axios.get("https://hostelbackend.herokuapp.com/roomslist").then((res) => {
+        setData(res.data);
+        setLoading(false);
+      });
     }
     fetchData();
   }, []);
@@ -38,12 +36,13 @@ function HomePage() {
               {" "}
               <Loader />
             </div>
+
           ) : (
             data.slice(0, 2).map((item) => {
               return <Room key={item._id} item={item} />;
             })
           )}
-          <CustomCard />
+            <CustomCard/>
         </Row>
         <Subhero />
         <Location />

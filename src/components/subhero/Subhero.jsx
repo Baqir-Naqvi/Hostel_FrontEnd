@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import image2 from "./subhero.jpg";
@@ -19,17 +18,16 @@ function Subhero() {
     Aos.init({ duration: 2000 });
   }, []);
   return (
-    <div>
-      <Container className="subheroclass">
-        <Row>
-          <Col sm={6}>
+ 
+        <Row className="subheroclass">
+          <Col sm={6} xs={12}>
             <h1>We have everything you need</h1>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga
               omnis, quaerat unde quod assumenda pariatur iure. Tempore debitis
               officiis perspiciatis.
             </p>
-            <ul className="facilites flex-sd-2">
+            <ul className="facilites">
               <li data-aos="fade-right" id="icons">
                 <FontAwesomeIcon icon={faWifi} size="2x" id='iconstyle'/>
                 <p>
@@ -60,12 +58,10 @@ function Subhero() {
               </li>
             </ul>
           </Col>
-          <Col sm={6}>
-            <img src={image2} id="subheroimg" alt="" />
+          <Col sm={6} xs={12}>
+            <img src={image2} id="subheroimg" alt="sub" />
           </Col>
         </Row>
-      </Container>
-    </div>
   );
 }
 
