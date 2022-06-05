@@ -25,7 +25,7 @@ function Rooms() {
     <Container>
       
       <Roomhero />
-      <Row xs={1} md={1} className="fluid" data-aos="fade-left">
+      <Row xs={1} md={1} data-aos="fade-left">
         {loading ? (
           <div> <Loader/></div>
         ) : (

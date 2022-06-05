@@ -1,7 +1,6 @@
 #imageroom{
     width: 100%;
     height:100%;
-    margin-left: -12px;
     padding-right: 0px;
     border-radius: 10px;
 }
@@ -16,7 +15,7 @@
     background-color: #285484;
     border-color: #285484;
 }
-.description p{
+.description{
     margin-bottom: 20px;
 }
 .hero-s{
@@ -34,5 +33,10 @@
     #card-room{
         display: block !important;
     }
+    #book-button{
+        text-align: center;
+        margin-bottom:20px;
+    }
+
 }
     

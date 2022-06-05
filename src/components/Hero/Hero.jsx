@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import "./Herostyle.css";
-import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import image1 from "../../images/hero2.jpg";
@@ -11,8 +10,6 @@ function Hero() {
     Aos.init({ duration: 1000 });
   }, []);
   return (
-    <div>
-      <Container className="hero-section">
         <Row>
           {/* Left side of hero section */}
           <Col className="leftside" sm={7}>
@@ -33,12 +30,11 @@ function Hero() {
           {/* Right side of hero section with image*/}
           <Col sm={5}>
             <div data-aos="zoom-in">
-              <img src={image1} alt="hero"/>
+              <img src={image1} alt="hero" id="rightimg"/>
             </div>
           </Col>
         </Row>
-      </Container>
-    </div>
+ 
   );
 }
 

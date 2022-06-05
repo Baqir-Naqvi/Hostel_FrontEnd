@@ -16,7 +16,7 @@ function Room({ item }) {
         data-aos="fade-right"
         key={id}
         className="card"
-        style={{ borderRadius: "10px", textAlign: "center" }}
+        style={{ borderRadius: "10px", textAlign: "center",padding:"0px",margin:"0px 2px",width:"23rem" }}
       >
         <img
           className="card-img-top"

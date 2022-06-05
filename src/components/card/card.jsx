@@ -1,10 +1,9 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import "./cardstyle.css";
+import './cardstyle.css'
 function card() {
   return (
-    <div>
       <Card className="customcard">
         <div className="innercard">
           <Card.Body>
@@ -20,7 +19,7 @@ function card() {
             </Card.Text>
             <Button href="/rooms"
               style={{
-                marginInline: "6rem",
+                marginInline: "5rem",
                 backgroundColor: "#f4fbfd",
                 color: "#285484",
                 padding: "8px",
@@ -32,7 +31,6 @@ function card() {
           </Card.Body>
         </div>
       </Card>
-    </div>
   );
 }
 

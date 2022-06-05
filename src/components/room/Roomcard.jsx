@@ -57,12 +57,13 @@ function Roomcard({ item }) {
       id="card-room"
       style={{
         marginBottom: "5rem",
+        padding: "0px",
       }}
     >
       <Col sm={4}>
         <img id="imageroom" src={locate + item.image} alt="hero" />
       </Col>
-      <Col sm={6}>
+      <Col sm={6} style={{marginLeft:"10px"}}>
         <h3
           className="room-title"
           style={{ cursor: "pointer" }}
@@ -87,7 +88,7 @@ function Roomcard({ item }) {
           Air Conditioner
         </li>
       </Col>
-      <Col sm={2}>
+      <Col sm={2} id="book-button">
         <div className=" hero-s">
           <p>Rs.{item.roomprice}</p>
         </div>
@@ -96,6 +97,7 @@ function Roomcard({ item }) {
       
             {loggedIn ? (
               <Button
+                
                 variant="primary"
                 size="lg"
                 disabled={isfull}
