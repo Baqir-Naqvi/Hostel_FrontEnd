@@ -4,6 +4,7 @@ import { Button } from "react-bootstrap";
 import "./navbar.css";
 import { useState, useEffect } from "react";
 import UserLogin from "../Modal/UserLogin";
+import {NavLink} from 'react-router-dom';
 function HNavbar() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -31,27 +32,27 @@ function HNavbar() {
     <div>
       <Navbar className="nav" collapseOnSelect expand="lg">
         <Container>
-          <Navbar.Brand href="/" id="navitem" style={{ fontSize: "1.5rem" }}>
+          <NavLink className="navbar-brand" to="/" id="navitem" style={{ fontSize: "1.5rem" }}>
             Hostel Book
-          </Navbar.Brand>
+          </NavLink>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse
             id="responsive-navbar-nav"
             style={{ backgroundColor: "white" }}
           >
             <Nav className="mx-auto">
-              <Nav.Link id="navitem" href="/">
+              <NavLink id="navitem" to="/">
                 Home
-              </Nav.Link>
-              <Nav.Link id="navitem" href="/rooms">
+              </NavLink>
+              <NavLink id="navitem" to="/rooms">
                 Rooms
-              </Nav.Link>
-              <Nav.Link id="navitem" href="/contactus">
+              </NavLink>
+              <NavLink id="navitem" to="/contactus">
                 Contact us
-              </Nav.Link>
-              <Nav.Link id="navitem" href="/about">
+              </NavLink>
+              <NavLink id="navitem" to="/about">
                 About
-              </Nav.Link>
+              </NavLink>
             </Nav>
             <Nav>
               <Nav.Link id="navbuttons">
