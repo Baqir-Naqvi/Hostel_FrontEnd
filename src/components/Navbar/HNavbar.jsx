@@ -81,6 +81,7 @@ function HNavbar() {
       {/* Conditional Rendering */}
       {show ? <UserLogin handler={handleClose} /> : null}
     </div>
+    
   );
 }
 
