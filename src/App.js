@@ -1,8 +1,9 @@
 import React from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar/HNavbar'
 import Footer from './components/footer/Footer'
 import Loader from './layout/loader/Loader'
+import {ToastContainer} from 'react-toastify'
 const LazyHomePage = React.lazy(() => import('./pages/HomePage'))
 const LazyAboutPage = React.lazy(() => import('./pages/About'))
 const LazyContactPage = React.lazy(() => import('./pages/Contactus'))
@@ -12,11 +13,11 @@ const LazyRegister = React.lazy(() => import('./pages/Register'))
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Navbar />
+      <ToastContainer/>
+       <Navbar />
         <Routes>
           <Route
-            path="/"
+           exact path="/"
             element={
               <React.Suspense fallback={<Loader />}>
                 <LazyHomePage />
@@ -24,7 +25,7 @@ function App() {
             }
           />
           <Route
-            path="/rooms"
+           exact path="/rooms"
             element={
               <React.Suspense fallback={<Loader />}>
                 <LazyRooms />
@@ -32,7 +33,7 @@ function App() {
             }
           />
           <Route
-            path="/about"
+          exact path="/about"
             element={
               <React.Suspense fallback={<Loader />}>
                 <LazyAboutPage />
@@ -41,7 +42,7 @@ function App() {
           />
 
           <Route
-            path="/rooms/details/:id"
+           exact path="/rooms/details/:id"
             element={
               <React.Suspense fallback={<Loader />}>
                 <LazyDetails />
@@ -50,7 +51,7 @@ function App() {
           />
 
           <Route
-            path="/contactus"
+           exact path="/contactus"
             element={
               <React.Suspense fallback={<Loader />}>
                 <LazyContactPage />
@@ -58,7 +59,7 @@ function App() {
             }
           />
           <Route
-            path="/register"
+           exact path="/register"
             element={
               <React.Suspense fallback={<Loader />}>
                 <LazyRegister />
@@ -66,8 +67,7 @@ function App() {
             }
           />
         </Routes>
-        <Footer />
-      </BrowserRouter>
+      <Footer />
     </div>
   )
 }

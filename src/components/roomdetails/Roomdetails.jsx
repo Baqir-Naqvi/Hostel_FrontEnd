@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import { Container, Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   faPerson,
   faBed,
@@ -17,47 +19,66 @@ import Loader from "../../layout/loader/Loader";
 import "./roomdetailsstyle.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
-const locate = "https://hostelbackend.herokuapp.com/roomimages/";
+const locate = "https://backendhostel.herokuapp.com/roomimages/";
 
 function Roomdetails() {
   const [room, setRoom] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [isfull, setIsFull] = useState(false);
   const param = useParams();
   useEffect(() => {
     if (
-      localStorage.getItem("token") === "user" ||
-      localStorage.getItem("token") === "admin"
+      localStorage.getItem("user") === "user" ||
+      localStorage.getItem("user") === "admin"
     )
       setLoggedIn(true);
-    else 
-    setLoggedIn(false);
+    else setLoggedIn(false);
 
-    setLoading(true);
-    async function GetRoombyID() {
+    async function fetchData() {
       await axios
-        .get(`https://hostelbackend.herokuapp.com/roomslist/${param.id}`)
+        .get(`https://backendhostel.herokuapp.com/roomslist/${param.id}`)
         .then((res) => {
           setRoom(res.data);
-          setLoading(false);
+          room ? setLoading(false) : setLoading(true);
+        })
+        .catch((error) => {
+          toast.error(error.response.data.message, {
+            position: "top-center",
+          });
         });
     }
-    
-    GetRoombyID();
-  }, [param.id]);
+    fetchData();
+    if (room.roomcapacity === 0) {
+      setIsFull(true);
+    }
+    // eslint-disable-next-line
+  }, [room]);
 
   async function BookRoom(e) {
+    e.preventDefault();
     axios({
       method: "put",
-      url: `https://hostelbackend.herokuapp.com/roomslist?id=${param.id}`,
+      url: `https://backendhostel.herokuapp.com/roomslist?id=${param.id}`,
+      headers: {
+        Authorization: localStorage.getItem("token")
+          ? `${localStorage.getItem("token")}`
+          : "",
+      },
       data: {
         roomcapacity: room.roomcapacity - 1,
       },
-    }).catch((err) => {
-      console.log(err);
-    });
-    window.location.reload();
-    alert("Room Booked Successfully");
+    })
+      .then((res) => {
+        toast.success(res.data.message, {
+          position: "top-center",
+        });
+      })
+      .catch((err) => {
+        toast.error(err.response.statusText, {
+          position: "top-center",
+        });
+      });
   }
 
   return loading ? (
@@ -100,6 +121,7 @@ function Roomdetails() {
                     variant="primary"
                     onClick={BookRoom}
                     style={{ marginInline: "40%" }}
+                    disabled={isfull}
                   >
                     BookNow
                   </Button>

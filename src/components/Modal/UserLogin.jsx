@@ -3,9 +3,15 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { FormGroup, Label, Input } from "reactstrap";
+import 'react-toastify/dist/ReactToastify.css';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 function UserLogin({ handler }) {
+  let navigate=useNavigate();
+
   const [show, setShow] = useState(true);
   const [result, setResult] = useState(null);
   const [isEmail, setEmail] = useState(false);
@@ -20,6 +26,13 @@ function UserLogin({ handler }) {
     if(localStorage.getItem("token")==="user"||localStorage.getItem("token")==="admin")
       setShow(false);
   }, [result]);
+  
+  function routeChange()
+  {
+    let path = `/`;
+    navigate(path);
+    window.location.reload();
+  }
 
   function ValidateModal() {
     if (form.get("email") === "") {
@@ -40,14 +53,21 @@ function UserLogin({ handler }) {
         password:form.get("password")
       }
       axios
-        .post("https://hostelbackend.herokuapp.com/login",user)
+        .post("https://backendhostel.herokuapp.com/login", user)
         .then((res) => {
-          if (res.data.token) {
+          if (res.data.token) 
+          {
             setResult(res.data);
-            localStorage.setItem("token", res.data.user.role);
-            window.location.reload();
-          } else {
-            alert(res.data.message);
+            localStorage.setItem("token", res.data.token);
+            localStorage.setItem("user", res.data.user);
+            handleClose();
+            routeChange();
+
+          } 
+          else 
+          {
+            toast.error(res.data.message, {
+              position: "top-center"});
           }
         })
         .catch((err) => {
@@ -55,7 +75,6 @@ function UserLogin({ handler }) {
         });
     }
   }
-
   const handleClose = () => setShow(false);
   const commitchange = (e) => {
     form.set(e.target.name, e.target.value);

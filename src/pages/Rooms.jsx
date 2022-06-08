@@ -13,7 +13,7 @@ function Rooms() {
   useEffect(() => {
     setLoading(true);
     async function fetchData() {
-      await axios.get("https://hostelbackend.herokuapp.com/roomslist").then((res) => {
+      await axios.get("https://backendhostel.herokuapp.com/roomslist").then((res) => {
         setData(res.data);
         setLoading(false);
       });

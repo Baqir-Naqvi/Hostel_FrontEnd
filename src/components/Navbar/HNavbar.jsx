@@ -12,8 +12,8 @@ function HNavbar() {
   const [loggedIn, setLoggedIn] = useState(false);
   useEffect(() => {
     if (
-      localStorage.getItem("token") === "user" ||
-      localStorage.getItem("token") === "admin"
+      localStorage.getItem("user") === "user" ||
+      localStorage.getItem("user") === "admin"
     )
       setLoggedIn(true);
   }, []);
@@ -68,7 +68,7 @@ function HNavbar() {
                   </Button>
                 )}
               </Nav.Link>
-              <Nav.Link id="navbuttons" href="#deets">
+              <Nav.Link id="navbuttons" href="/register">
                 <Button variant="outline-primary" onClick={NavigatetoSignup}>
                   SignUp
                 </Button>

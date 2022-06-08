@@ -15,10 +15,11 @@ function HomePage() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    Aos.init({ duration: 2000 });
+    Aos.init({ duration: 1000 });
     setLoading(true);
+  
     async function fetchData() {
-      await axios.get("https://hostelbackend.herokuapp.com/roomslist").then((res) => {
+      await axios.get("https://backendhostel.herokuapp.com/roomslist").then((res) => {
         setData(res.data);
         setLoading(false);
       });

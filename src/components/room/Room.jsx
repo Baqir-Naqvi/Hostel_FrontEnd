@@ -7,11 +7,10 @@ import {useId} from 'react';
 function Room({ item }) {
   const id=useId();
   useEffect(() => {
-    Aos.init({ duration: 2000 });
+    Aos.init({ duration: 1300 });
   }, []);
-  const locate = "https://hostelbackend.herokuapp.com/roomimages/";
+  const locate="https://backendhostel.herokuapp.com/roomimages/";
   return (
-    
       <div
         data-aos="fade-right"
         key={id}
