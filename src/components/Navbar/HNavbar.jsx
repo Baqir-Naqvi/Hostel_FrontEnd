@@ -55,7 +55,6 @@ function HNavbar() {
               </NavLink>
             </Nav>
             <Nav>
-              <Nav.Link id="navbuttons">
                 {
                 loggedIn ? 
                 (
@@ -63,11 +62,10 @@ function HNavbar() {
                     Logout
                   </Button>
                 ) : (
-                  <Button variant="outline-primary" onClick={ModalPopup}>
+                  <Button id="loginbutton" style ={{height:"fit-content",marginTop:"9px"}}variant="outline-primary" onClick={ModalPopup}>
                     Login
                   </Button>
                 )}
-              </Nav.Link>
               <Nav.Link id="navbuttons" href="/register">
                 <Button variant="outline-primary" onClick={NavigatetoSignup}>
                   SignUp
@@ -81,7 +79,7 @@ function HNavbar() {
       {/* Conditional Rendering */}
       {show ? <UserLogin handler={handleClose} /> : null}
     </div>
-    
+
   );
 }
 

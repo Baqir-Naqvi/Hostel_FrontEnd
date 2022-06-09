@@ -45,5 +45,9 @@ color:black
     #navitem{
      margin-inline: 25%;
     }
+    #loginbutton{
+      margin-inline: 25%;
+      margin-right:58%;
+    }
 
   }
