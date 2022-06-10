@@ -58,7 +58,7 @@ function HNavbar() {
                 {
                 loggedIn ? 
                 (
-                  <Button variant="outline-primary" onClick={ClearLog}>
+                  <Button variant="outline-primary"style ={{height:"fit-content",marginTop:"9px"}} onClick={ClearLog}>
                     Logout
                   </Button>
                 ) : (
